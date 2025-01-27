@@ -1,0 +1,989 @@
+
+html{
+    scrollbar-width: none;
+    cursor: default;
+    margin:0;
+    padding:0;
+}
+.App {
+  display:flex;
+  flex-direction: column;
+  text-align: center;
+  /*font-family: apercu sans-serif;*/
+  font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  transition: background-color 0.3s;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.bold{
+   font-weight: bold;
+
+}
+.Content{
+  width:50%;
+  text-align: left;
+  font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+  padding:5%;
+  border-radius: 2rem;
+}
+.li{
+  text-align: left;
+}
+/* Navigation bar ...........................................................................*/
+
+.navbar{
+  backdrop-filter: blur(30px); 
+  background-color: rgba(255, 255, 255, 1); 
+        position:fixed;
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        width:100%;
+        height:10vh;
+        z-index: 99;
+
+}
+.navbarShadow{
+  backdrop-filter: blur(40px); 
+  background-color: rgba(255, 255, 255, 0.8); 
+        position:fixed;
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        width:100%;
+        height:10vh;
+        z-index: 99;
+        box-shadow: 0 0.1vw 0.3vw rgba(0, 0, 0, 0.1);
+
+}
+.NavGap{
+  width:35%;
+}
+.MobileNav{
+display: none;
+}
+.Selected{
+    padding-left: 0.8vw;
+    padding-right: 0.8vw;
+    font-weight: bold;
+    
+
+    
+
+}
+.Unselected{
+    padding-left: 0.8vw;
+    padding-right: 0.8vw;
+
+}
+.navLink {
+    text-align: center;
+    text-decoration: none;
+    font-size: 2.1vh;
+    color:#000000;
+  }
+
+  .navLink:hover {
+    font-weight: bold; 
+  }
+  .navLink:hover + .navChosen {
+    display: block; 
+    animation: expandWidth 0.5s forwards;
+
+  }
+  .navChosen {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 0;
+    height: 0.13vw;
+    position: relative;
+    top: 0.2vw;
+    transition: width 0.5s ease-in-out; 
+  }
+  @keyframes expandWidth {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+.Logo:Hover {
+    filter: drop-shadow(0.8px 0.8px 0.4px rgba(86, 86, 86, 0.5));
+
+}
+.MobileLogo{
+  display:none;
+}
+/* Home ...........................................................................*/
+.Home{
+    padding-top: 8vh;
+    box-sizing: border-box;
+    height:100vh;
+    display:flex;
+    flex-direction: column;
+    /*background-color: rgb(255, 255, 255); */
+
+}
+.HomeContent{
+  display:flex;
+  flex-direction: row;
+}
+.Slogan{
+    width:45%;
+    margin-left:5.6%;
+    padding-top:5vw;
+    height:100%;
+    font-weight: bold;
+    font-size:7vh;
+    margin-right:4%;
+    line-height: 10vh;
+    text-align: left;
+    animation:float 1s ease-in-out 1;
+}
+@keyframes float {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    30%{
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    60% {
+        transform: translateY(-10px);
+        opacity: 0.5;
+      }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+.Text1{
+    width:57%;
+    height:100%;
+    padding-top:5.5vw;
+    padding-left:2%;
+    padding-right:10%;
+    text-align: left;
+    font-weight: 350;
+    line-height: 220%;
+    font-size: 2.3vh;
+    color:rgb(74, 74, 74);
+    animation:float 1s ease-in-out 1;
+}
+.IconHidden{
+  position: fixed;
+  width:100%;
+  bottom: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 60px;
+  transition: opacity 0.5s ease-in-out; 
+  opacity: 0;
+}
+.IconVisible{
+  position: fixed;
+  width:100%;
+  bottom: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 60px;
+  transition: opacity 0.5s ease-in-out; 
+  opacity: 1;
+}
+/* About Me ...........................................................................*/
+.AboutMe{
+  padding-top: 13vh;
+  box-sizing: border-box;
+  position:relative;
+    height:100vh;
+    display:flex;
+    flex-direction: row; 
+    justify-content:center;
+    z-index:90;
+
+}
+.ProfilePic{
+  opacity:0;
+}
+.ProfilePicVisible{
+  position:absolute;
+  width: 33vw;       
+  height: 33vw;  
+  border-radius: 50%;    
+  left:2vw;
+  background-image: url('./My-pic.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation:ZoomInFromLeft 1s ease-in-out 1;
+
+}
+@keyframes ZoomInFromLeft{
+  0%{
+    opacity:0;
+    transform: translateX(-30vw);
+  }
+  100%{
+    opacity:1;
+  }
+}
+
+@keyframes ZoomInFromBottom{
+  0%{
+    opacity:0;
+    transform: translateY(-30vh);
+  }
+  100%{
+    opacity:1;
+  }
+}
+@keyframes ZoomInFromRight{
+  0%{
+    opacity:0;
+    transform: translateX(30vw);
+  }
+  100%{
+    opacity:1;
+  }
+}
+.TextAboutMe{
+
+  color:#ececec;
+  position:absolute;
+  height:30vh;
+  width: 45vw;
+  left:45vw;
+  line-height: 4.9vh;
+  text-align: left;
+  animation:ZoomInFromBottom 1s ease-in-out 1;
+  font-size: 2vh;
+}
+.Designer{
+  font-size: 3vh;
+  padding: 0.4vw;
+  font-weight: bold;
+}
+.FrontEnd{
+  font-size: 3vh;
+  padding: 0.4vw;
+  font-weight: bold;
+}
+
+.Designer:Hover{
+  background-color: #ffffff;
+  color:#000000;
+  cursor:pointer;
+}
+
+.FrontEnd:Hover{
+  background-color: #ffffff;
+  color:#000000;
+  cursor:pointer;
+}
+.IntroText{
+  padding-top: 5vh;
+}
+.ExperienceContaner{
+  position:relative;
+  height:30vh;
+  width: 50vw;
+  left:0;
+
+  border-radius: 3%;
+  background-color: #ffffff;
+  animation:ZoomInFromRight 1s ease-in-out 1;
+}
+.Experience{
+  position:absolute;
+  margin-top: 10vh;
+  left:0vw;
+  border-radius: 3%;
+  width:30vw;
+  height:0.05vw;
+  background-color: #fff;
+  animation:ZoomInFromRight 1s ease-in-out 1;
+}
+
+.Dot1{
+  position:absolute;
+  bottom:-0.2vh;
+  width: 0.5vh;       
+  height: 0.5vh;  
+  border-radius: 50%;  
+  background-color: #ffffff;
+  cursor: pointer;
+  color:#fff;
+}
+.Year{
+  position:absolute;
+  bottom:1vw;
+  left:-1vw;
+  font-size: 2vh;
+  background: #ffffff;
+  color: #000;
+  padding:0.1vw 0.4VW 0.1VW 0.4VW;
+  border-radius: 4%;
+}
+.Year:hover{
+  transform: scale(1.1);
+
+}
+.CurrentDesCription{
+  color: white; 
+  font-size: 2vh;
+  text-align: left;
+   font-weight: bold;
+}
+.CurrentContent{
+  color: white; 
+  font-size: 1.5vh;
+  width: 40vw;
+line-height: 3.5vh;
+  text-align: left;
+}
+/* Portfolio ...........................................................................*/
+.Portfolio {
+  padding-top: 13vh;
+  box-sizing: border-box;
+  min-height: 100vh; /* 高度根据子元素内容动态调整 */
+  display: flex;
+  flex-direction: column;
+
+
+}
+.ProjectTitle{
+  padding-left:8vw;
+  animation:ZoomInFromBottom 1s ease-in-out 1;
+}
+.ProjectContent{
+  padding-top: 2vw;
+  width:50%;
+  height:40vw;
+  display:flex;
+  flex-direction: column;
+}
+.AccordionText{
+ font-size: 0.8vw;
+ line-height: 1.2vw;
+ padding-left: 6vw ;}
+
+
+
+.AccordionItem {
+  font-size: 1vw;
+  /*border: 0.1vw solid #ccc;*/
+  text-align: left;
+  margin-bottom: 1vw;
+  overflow: hidden;
+  transition: all 0.3s ease; /* 添加整体过渡效果 */
+  animation:ZoomInFromLeft 1s ease-in-out 1;
+ 
+}
+
+.AccordionTitle {
+  padding-left: 7vw;
+  padding-top: 0vw;
+
+  cursor: pointer;
+  user-select: none;
+  z-index: 99;
+}
+.AccordionTitle:hover {
+color:#610869;
+}
+
+.AccordionContent {
+  padding-bottom: 1vw;
+  max-height: 0;
+  opacity:0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.3s ease; 
+  transition:  0.5s ease, padding 0.3s ease; 
+}
+
+.AccordionContent.Open {
+  max-height: 10vw; 
+  padding-left: -3vw;
+  opacity:1;
+}
+
+.ContentInner {
+  padding: 0 0.5vw;
+  transition: padding 0.3s ease;
+}
+
+
+.AccordionContent.Open .ContentInner {
+  padding: 1vw; /* 展开时的内边距 */
+}
+
+
+
+.ProjectBox{
+  display: flex;
+  flex-direction: row;
+}
+.ProjectDisplay{
+  width: 70%;
+  padding-left:5vw;
+  padding-right: 1vw;
+  margin-top:-1vw;
+  animation:ZoomInFromRight 1s ease-in-out 1;
+}
+
+.SwitcherContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left:5%;
+  transform: translateY(-50%);
+  width: 90%;
+  pointer-events: none;
+}
+
+.SwitcherButton {
+  pointer-events: auto;
+
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color:#610869;
+  border-radius: 10px;
+  background-color: #eeeeee;
+}
+.SwitcherButton:hover {
+  border-radius: 10px;
+  background-color: #afafaf;
+}
+  /*Web...........................................................................*/
+.Web{
+  padding-top: 13vh;
+  box-sizing: border-box;
+  min-height: 100vh; /* 高度根据子元素内容动态调整 */
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+ line-height: 3.5vh;
+}
+
+
+/* Skills ...........................................................................*/
+.Skills{
+    height:100vh;
+    padding-top: 10vh;
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+
+}
+
+.TagCloud{
+  padding-top:5vw;
+  padding-left:10%;
+  color:rgb(61, 61, 61);
+  font-size: 2vh;
+}
+.SkillContent{
+
+  
+  height:100vh;
+  margin:auto;
+  justify-content: top;
+}
+.SkillDescription{
+
+  padding-left: 10vw;
+  width:70%;
+  margin-top: 25vh;
+  font-size: 1.2rem;
+  justify-content: top;
+  line-height: 2rem;
+}
+
+/* Contact ...........................................................................*/
+.Contact{
+  box-sizing: border-box;
+  padding-top:10vh;
+    height:100vh;
+    display:flex;
+    flex-direction: row;
+    justify-content: top;
+}
+
+
+.ContactFormSection {
+
+  flex: 1;
+  max-width: 60%;
+}
+
+.ContactTitle {
+  font-size: 1.5rem;
+
+  margin-bottom: 5vh;
+
+}
+.Form{
+  position:relative;
+  padding-left: 16vw;
+  padding-top:2vh;
+  width:50%;
+  height:80vh;
+  text-align: left;
+
+}
+
+.Form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.Form textarea{
+  width: 60%; /* 设置固定宽度 */
+    height: 150px; /* 设置固定高度 */
+    resize: none; /* 禁止用户手动调整尺寸 */
+ 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* 包括内边距和边框在宽高内 */
+
+}
+.Form input,
+.Form textarea {
+  width: 60%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.SubmitButton {
+
+  bottom:25%;
+  left:32%;
+  background-color: #0d56a4;
+  color: white;
+  padding: 20px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.SubmitButton:hover{
+  background-color: #b00f55;
+}
+
+.ContactInfoSection {
+  position:absolute;
+  left:60vw;
+  font-size: 1rem;
+  line-height: 2rem;
+  text-align: left;
+  flex: 0.6;
+  width: auto;
+  min-height:56%;
+  padding-top: 2vh;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  border-radius: 8px;
+
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 80;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive Design for Mobile ................................................................................................................................................................*/
+@media (max-width: 900px) {
+  .Content{
+    width:70%;
+    text-align: center;
+    font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 2.8vw;
+    font-weight: 200;
+    line-height: 5vw;
+  }
+
+
+  .visible {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+  }
+  
+  .hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+.Logo{
+  display:none !important;
+}
+.navbar{
+  background-color: #fff;
+  width:100%;
+  justify-content: space-between; /* 元素之间均匀分布 */
+
+  padding-right:10%;
+  height:100vh;
+  position:fixed;
+  padding-top:10vh;
+  z-index:99;
+  flex-direction:column;
+  
+ 
+}
+.navbarShadow{
+  flex-direction:column;
+  background-color: #fff;
+  width:100%;
+  justify-content: space-between; /* 元素之间均匀分布 */
+
+  padding-right:10%;
+  padding-top:10vh;
+  box-shadow: 0 0.1vw 0.3vw rgba(0, 0, 0, 0.1);
+  height:100vh;
+  position:fixed;
+  z-index:99;
+}
+.MobileNav{
+  cursor:pointer;
+  display: block;
+  height:4vh;
+  width:5vw;
+  line-height: 4vh;
+  position:fixed;
+  right:4vw;
+  top:3vh;
+  z-index:100;
+}
+.MobileNav:Hover{
+  filter: drop-shadow(0.8px 0.8px 2px rgba(86, 86, 86, 0.5));
+}
+.NavGap{
+  display: none;
+}
+.Selected{
+  padding-left: 0.8vw;
+  padding-right: 0.8vw;
+  font-weight: bold;
+}
+.navLink{ 
+  font-size: 3vh; 
+
+}
+
+/* Home */
+.Home{
+  padding-top: 2vw;
+  height:auto;
+  display:flex;
+  flex-direction: column;
+  justify-content: top;
+
+ 
+
+}
+.HomeContent{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* 垂直居中 */
+  height:auto;
+
+}
+
+.Slogan{
+  width:80%;
+  font-size: 3.9vh;
+  text-align: center;
+  align-items:center;
+}
+
+.Text1{
+  width:80%;
+  font-size:2vh;
+  text-align: center;
+  align-items:center;
+}
+
+.MobileLogo{
+  display:block;
+  width:20%;
+}
+
+/* About Me ...........................................................................*/
+.AboutMe{
+
+  position:relative;
+    height:150vh  ;
+    display:flex;
+    flex-direction: column; 
+    justify-content: top;
+
+}
+.ProfilePic{
+  opacity:0;
+}
+.ProfilePicVisible{
+  position-anchor: top;
+  left:32vw;
+  width: 35vw;       
+  height: 35vw;  
+  top:20vw;
+  border-radius: 50%;    
+  background-image: url('./My-pic.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation:ZoomInFromLeft2 1s ease-in-out 1;
+
+}
+@keyframes ZoomInFromLeft2{
+  0%{
+    opacity:0;
+    transform: translateX(30vw);
+  }
+  100%{
+    opacity:1;
+  }
+}
+
+
+.TextAboutMe{
+  color:#ececec;
+ top:60vw;
+  
+  left:10%;
+  width:80%;
+  text-align: center;
+  align-items:center;
+  animation:ZoomInFromBottom 1s ease-in-out 1;
+  font-size:1.7vh;
+  line-height: 4.2vh;
+}
+.Designer{
+  font-size: 2vh;
+  padding: 1vw;
+  font-weight: bold;
+}
+.FrontEnd{
+  font-size: 2vh;
+  padding: 1vw;
+  font-weight: bold;
+}
+
+.Designer:Hover{
+  background-color: #ffffff;
+  color:#000000;
+  cursor:pointer;
+}
+
+.FrontEnd:Hover{
+  background-color: #ffffff;
+  color:#000000;
+  cursor:pointer;
+}
+.IntroText{
+  padding-top: 5vh;
+}
+.Experience{
+  position:absolute;
+  border-radius: 3%;
+margin-top: 15vh;;
+  width:80vw;
+  left:0;
+  height:0.05vw;
+  background-color: #fff;
+  animation:ZoomInFromRight 1s ease-in-out 1;
+}
+
+.Dot1{
+  position:absolute;
+  bottom:-1vw;
+  width: 2vw;       
+  height: 2vw;  
+  border-radius: 50%;  
+  background-color: #ffffff;
+  cursor: pointer;
+  color:#fff;
+}
+.Year{
+  position:absolute;
+  bottom:4vw;
+  left:-2vw;
+  font-size: 2.2vw;
+  background: #ffffff;
+  color: #000;
+  padding:0.05vw 1VW 0.05VW 1VW;
+  border-radius: 4%;
+}
+.Year:hover{
+  transform: scale(1.1);
+
+}
+
+.CurrentDesCription{
+  color: white; 
+  font-size: 2vh;
+  text-align: left;
+   font-weight: bold;
+   text-align: center;
+}
+.CurrentContent{
+  color: white; 
+  font-size: 1.7vh;
+  width: 80vw;
+line-height: 3.3vh;
+  text-align: center;
+}
+
+.ExperienceContainer{
+  position:relative;
+
+
+}
+
+/*Portfolio ******************************************/
+.Portfolio {
+  position:relative;
+    min-height:100vh  ;
+    display:flex;
+    flex-direction: column; 
+    justify-content: top !important;
+    text-align: center !important;
+    align-items: center;
+    padding:0;
+    
+
+
+}
+
+.ProjectDisplay{
+width: 60%;
+display: none;
+}
+.ProjectTitle{
+  margin-top: 5vh;
+ font-size: 6vh;
+
+}
+.ProjectContent{
+  width:80%;
+  height:auto;
+  padding-bottom: 2vh;
+  display:flex;
+  flex-direction: column;
+  text-align: center !important;
+  align-items: center;
+  justify-content: space-between; /* 元素之间均匀分布 */
+}
+.AccordionText{
+ font-size: 1rem;
+ line-height: 2vh;
+ height:auto;
+
+}
+.AccordionTitle {
+  padding-left: 0;
+  font-size: 1rem;
+  text-align: center;
+  align-items: center;
+}
+.AccordionItem{
+  text-align: center !important;
+  font-size:2vh;
+  align-items: center;
+  height:10vh;
+}
+.ContentInner{
+ display: none;
+ 
+}
+.ProjectBox{
+  margin-top: 4vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center !important;
+  align-items: center;
+
+}
+.Web{
+padding-top: 0vh;
+}
+.SwitcherButton {
+  font-size: 2rem;
+}
+.SwitcherContainer{
+
+  left:4%;
+  width: 92%;}
+
+/*Skills ******************************************/
+  .Skills{
+    display: flex;
+    height:100vh;
+    padding-top: 10vh;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    box-sizing: border-box;
+
+}
+.TagCloud{
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 81%; /* 适配屏幕宽度 */
+  height: 50vh; /* 确保 TagCloud 高度 */
+}
+.SkillContent {
+  width:100%;
+  margin-top: -10vh;
+  justify-content: top;
+  text-align: center;
+}
+/*Contact***********************************/
+.Contact{
+  box-sizing: border-box;
+   padding:0;
+    min-height:100vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+}
+.Form{
+  padding-left:0;
+  padding-top:2vh;
+  width:80%;
+  height:80vh;
+  text-align: center;
+
+}
+.ContactInfoSection {
+ display: none;
+}
+
+}

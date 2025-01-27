@@ -1,0 +1,94 @@
+/* index.css - 基础样式和响应式媒体查询 */
+
+/* 全局基础样式 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* 默认布局调整 */
+.Portfolio {
+  margin-top: 1vw;
+  min-height: 200px; /* 默认最小高度 */
+  display: flex;
+  flex-direction: column;
+  padding-top: 3vw;
+  padding-bottom: 2vw;
+}
+
+.NavigationBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+}
+
+.NavigationBar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.NavigationBar a:hover {
+  text-decoration: underline;
+}
+
+/* 响应式样式 */
+
+/* 平板设备样式 */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .NavigationBar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .Portfolio {
+    padding: 5vw;
+    margin-top: 2vw;
+  }
+
+  .Portfolio .card {
+    margin: 10px auto;
+    width: 90%; /* 卡片宽度占比调整 */
+  }
+
+  h1, h2, h3 {
+    font-size: 1.5em; /* 调整标题大小 */
+  }
+}
+
+/* 手机设备样式 */
+@media (max-width: 599px) {
+  .NavigationBar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .NavigationBar a {
+    margin: 5px 0; /* 链接垂直排列 */
+    font-size: 1em;
+  }
+
+  .Portfolio {
+    padding: 5vw;
+    flex-direction: column;
+  }
+
+  .Portfolio .card {
+    margin: 10px auto;
+    width: 100%; /* 卡片全屏展示 */
+  }
+
+  h1, h2, h3 {
+    font-size: 1.2em; /* 标题更小适配屏幕 */
+  }
+
+  img {
+    max-width: 100%;
+    height: auto; /* 确保图片不会超出屏幕 */
+  }
+}
