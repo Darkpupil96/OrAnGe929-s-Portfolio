@@ -10,7 +10,6 @@ function About() {
     const [intersecting, setIntersecting] = useState(false);
     const [dragging, setDragging] = useState(false);
     const [startX, setStartX] = useState(0);
-
     const [position, setPosition] = useState(0);
     const [experiences, setExperiences] = useState([
         { year: "2018", description: "Bachelor of Industrial Design", content: "At Anhui University, I studied Industrial Design and earned a Bachelor's degree. During these four years, I developed a solid aesthetic foundation and cultivated sufficient skills in image design/3D model design, as well as design thinking." },
@@ -23,29 +22,29 @@ function About() {
 
     const updateExperience = (position) => {
         if (expRef.current && dotRef.current) {
-            const totalLength = expRef.current.offsetWidth - dotRef.current.offsetWidth; // 计算整条线的长度
-            const segments = experiences.length; // 分段数量
-            const index = Math.floor((position / totalLength) * segments); // 按比例计算当前索引
+            const totalLength = expRef.current.offsetWidth - dotRef.current.offsetWidth;
+            const segments = experiences.length;
+            const index = Math.floor((position / totalLength) * segments);
             if (index < segments && index >= 0) {
                 setCurrentExp(experiences[index]);
             }
         }
     };
 
-    const handleWheel = (e) => {   // Handle the event that trigger the slider to move as the wheel scrolls
+    const handleWheel = (e) => {
         const yearRect = yearRef.current.getBoundingClientRect();
         const yearCenterY = yearRect.top + yearRect.height / 2;
         const screenCenterY = window.innerHeight / 2;
 
-        if (intersecting && Math.abs(yearCenterY - screenCenterY) < 150) { // Set trigger conditions  the 150px is Tolerance
+        if (intersecting && Math.abs(yearCenterY - screenCenterY) < 150) {
             const maxPosition = expRef.current.offsetWidth - dotRef.current.offsetWidth;
             const minPosition = 0;
 
             if ((e.deltaY > 0 && position < maxPosition) || (e.deltaY < 0 && position > minPosition)) {
-                e.preventDefault(); // stop the page sliding
+                e.preventDefault();
                 const delta = e.deltaY;
                 const newPosition = position + delta;
-                const boundedPosition = Math.max(minPosition, Math.min(newPosition, maxPosition));  //Prevent movement beyond the ends of the line
+                const boundedPosition = Math.max(minPosition, Math.min(newPosition, maxPosition));
                 setPosition(boundedPosition);
                 updateExperience(boundedPosition);
             }
@@ -72,21 +71,47 @@ function About() {
         setDragging(false);
     };
 
+    const handleTouchStart = (e) => {
+        if (e.touches.length === 1) {
+            setDragging(true);
+            setStartX(e.touches[0].clientX - position);
+        }
+        e.preventDefault();
+    };
+
+    const handleTouchMove = (e) => {
+        if (dragging && e.touches.length === 1) {
+            const newPosition = e.touches[0].clientX - startX;
+            const maxPosition = expRef.current.offsetWidth - dotRef.current.offsetWidth;
+            const boundedPosition = Math.max(0, Math.min(newPosition, maxPosition));
+            setPosition(boundedPosition);
+            updateExperience(boundedPosition);
+        }
+    };
+
+    const handleTouchEnd = () => {
+        setDragging(false);
+    };
+
     useEffect(() => {
         const handleGlobalWheel = (e) => handleWheel(e);
 
         window.addEventListener('wheel', handleGlobalWheel, { passive: false });
         window.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('mouseup', handleMouseUp);
+        window.addEventListener('touchmove', handleTouchMove);
+        window.addEventListener('touchend', handleTouchEnd);
 
         return () => {
             window.removeEventListener('wheel', handleGlobalWheel);
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseup', handleMouseUp);
+            window.removeEventListener('touchmove', handleTouchMove);
+            window.removeEventListener('touchend', handleTouchEnd);
         };
     }, [position, intersecting, dragging, startX]);
 
-    useEffect(() => {  // set the Intersection Observer 
+    useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 setIntersecting(entry.isIntersecting && entry.intersectionRatio > 0.5);
@@ -113,16 +138,16 @@ function About() {
     useEffect(() => {
         const handleResize = () => {
             if (expRef.current && dotRef.current) {
-                const totalLength = expRef.current.offsetWidth - dotRef.current.offsetWidth; // 整条线的长度
-                const segments = experiences.length; // 分段数量
-                const index = experiences.indexOf(currentExp); // 当前索引
-                const newPosition = (index / segments) * totalLength; // 根据索引计算新的位置
-                setPosition(newPosition); // 更新位置
+                const totalLength = expRef.current.offsetWidth - dotRef.current.offsetWidth;
+                const segments = experiences.length;
+                const index = experiences.indexOf(currentExp);
+                const newPosition = (index / segments) * totalLength;
+                setPosition(newPosition);
             }
         };
-    
+
         window.addEventListener('resize', handleResize);
-    
+
         return () => {
             window.removeEventListener('resize', handleResize);
         };
@@ -130,42 +155,41 @@ function About() {
 
     return (
         <div id="About" className={Styles.AboutMe}>
-        
-        <div ref={ref} className={isVisible ? Styles.ProfilePicVisible : Styles.ProfilePic}></div>
+            <div ref={ref} className={isVisible ? Styles.ProfilePicVisible : Styles.ProfilePic}></div>
             <div ref={ref} className={isVisible ? Styles.TextAboutMe : {}}>
-           
-                <span className={Styles.Designer}  onClick={() => {
-    document.getElementById('Portfolio')?.scrollIntoView({ behavior: 'smooth' });
-  }}>Designer</span> <span>|</span><span  className={Styles.FrontEnd} onClick={() => {
-    document.getElementById('Portfolio')?.scrollIntoView({ behavior: 'smooth' });
-  }}>Front-end developer</span>
-
+                <span className={Styles.Designer} onClick={() => {
+                    document.getElementById('Portfolio')?.scrollIntoView({ behavior: 'smooth' });
+                }}>Designer</span> <span>|</span>
+                <span className={Styles.FrontEnd} onClick={() => {
+                    document.getElementById('Portfolio')?.scrollIntoView({ behavior: 'smooth' });
+                }}>Front-end developer</span>
 
                 <div className={Styles.IntroText}>Hi, I am Mark Yang, a UI/UX designer and front-end developer with a strong background in Industrial, UI, and UX design. <br />
                     In the course of my studies, I shifted from a focus on conceptual and styling design to design that focuses on practical functionality and user experience.
                     <br /> Living in China, Ecuador, and Australia has broadened my perspective and deepened my understanding of design across cultures. I strive to create intuitive and engaging user experiences.</div>
 
-                    <div className={Styles.ExperienceContainer}>
-            <div ref={expRef} className={isVisible ? Styles.Experience : {}}>
-                <div
-                    ref={dotRef}
-                    className={Styles.Dot1}
-                    style={{ left: `${position}px` }}
-                    onMouseDown={handleMouseDown}
-                >
-                    <span ref={yearRef} className={Styles.Year}>{currentExp.year}</span>
+                <div className={Styles.ExperienceContainer}>
+                    <div ref={expRef} className={isVisible ? Styles.Experience : {}}>
+                        <div
+                            ref={dotRef}
+                            className={Styles.Dot1}
+                            style={{ left: `${position}px` }}
+                            onMouseDown={handleMouseDown}
+                            onTouchStart={handleTouchStart} // Add touch start event
+                        >
+                            <span ref={yearRef} className={Styles.Year}>{currentExp.year}</span>
+                        </div>
+                        <p className={Styles.CurrentDesCription}>{currentExp.description}</p>
+                        <p className={Styles.CurrentContent}>{currentExp.content}</p>
+                    </div>
                 </div>
-                <p className={Styles.CurrentDesCription} >{currentExp.description} </p>
-                <p className={Styles.CurrentContent}>{currentExp.content}</p>
             </div>
-            </div>
-            </div>
-
         </div>
-    )
+    );
 }
 
 export default About;
+
 
 
 

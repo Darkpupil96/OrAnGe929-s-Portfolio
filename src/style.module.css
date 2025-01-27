@@ -4,6 +4,7 @@ html{
     cursor: default;
     margin:0;
     padding:0;
+    box-sizing: border-box;
 }
 .App {
   display:flex;
@@ -648,8 +649,10 @@ color:#610869;
 
   padding-right:10%;
   height:100vh;
+  box-sizing: border-box;
   position:fixed;
   padding-top:10vh;
+  padding-bottom: 10vh;
   z-index:99;
   flex-direction:column;
   
@@ -865,6 +868,10 @@ line-height: 3.3vh;
 }
 
 /*Portfolio ******************************************/
+.Content{
+  font-size: 1rem;
+  line-height: 2rem;
+}
 .Portfolio {
   position:relative;
     min-height:100vh  ;
