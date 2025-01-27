@@ -87,8 +87,8 @@ function NavigationBar({ClickSetVisible}) {
             paddingLeft:'5vw',
             width:'30%',
             height:'3vw',}}>
-        <a href={'/'}> <img src={Logo} alt='Logo' style={{width:'2.2vw', height:'2.2vw',paddingRight:'0.5vw'}}/></a>
-        <a href={'/'} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <a href={'/OrAnGe929-s-Portfolio'}> <img src={Logo} alt='Logo' style={{width:'2.2vw', height:'2.2vw',paddingRight:'0.5vw'}}/></a>
+        <a href={'/OrAnGe929-s-Portfolio'} style={{ textDecoration: 'none', color: 'inherit' }}>
           <div style={{fontSize:'1.2vw'}}>
             <span style={{fontWeight:"bold"}}>OrAnGe</span>929
           </div>
