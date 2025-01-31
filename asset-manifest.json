@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/OrAnGe929-s-Portfolio/static/css/main.791666c1.css",
-    "main.js": "/OrAnGe929-s-Portfolio/static/js/main.bc3265db.js",
+    "main.css": "/OrAnGe929-s-Portfolio/static/css/main.70f0c263.css",
+    "main.js": "/OrAnGe929-s-Portfolio/static/js/main.48c6fd00.js",
     "static/js/787.167ecae5.chunk.js": "/OrAnGe929-s-Portfolio/static/js/787.167ecae5.chunk.js",
     "static/media/Galapagosproject.png": "/OrAnGe929-s-Portfolio/static/media/Galapagosproject.98ca336ed3a85ecd132a.png",
     "static/media/BritishRockChronicle.png": "/OrAnGe929-s-Portfolio/static/media/BritishRockChronicle.40f7ef72da55b51306f0.png",
@@ -10,6 +10,7 @@
     "static/media/Reception.png": "/OrAnGe929-s-Portfolio/static/media/Reception.e102462a12509b8dedf2.png",
     "static/media/FinalPrototype.png": "/OrAnGe929-s-Portfolio/static/media/FinalPrototype.98159b2e4345d23b43aa.png",
     "static/media/Geography.png": "/OrAnGe929-s-Portfolio/static/media/Geography.da1b30d90a1cf53776af.png",
+    "static/media/MyPic.png": "/OrAnGe929-s-Portfolio/static/media/MyPic.e56f193cc77db49fb658.png",
     "static/media/galapagosTopPic.png": "/OrAnGe929-s-Portfolio/static/media/galapagosTopPic.4590a9c8e1489fa8c602.png",
     "static/media/AMCTopPic.png": "/OrAnGe929-s-Portfolio/static/media/AMCTopPic.36e95268973df994e2cb.png",
     "static/media/TimeLine.png": "/OrAnGe929-s-Portfolio/static/media/TimeLine.13b36233184d02243787.png",
@@ -35,12 +36,12 @@
     "static/media/GalapagosNav.png": "/OrAnGe929-s-Portfolio/static/media/GalapagosNav.a22b1ed65d8cb5afd6ca.png",
     "static/media/logo2.png": "/OrAnGe929-s-Portfolio/static/media/logo2.394d4cc9a76d42ea31d3.png",
     "index.html": "/OrAnGe929-s-Portfolio/index.html",
-    "main.791666c1.css.map": "/OrAnGe929-s-Portfolio/static/css/main.791666c1.css.map",
-    "main.bc3265db.js.map": "/OrAnGe929-s-Portfolio/static/js/main.bc3265db.js.map",
+    "main.70f0c263.css.map": "/OrAnGe929-s-Portfolio/static/css/main.70f0c263.css.map",
+    "main.48c6fd00.js.map": "/OrAnGe929-s-Portfolio/static/js/main.48c6fd00.js.map",
     "787.167ecae5.chunk.js.map": "/OrAnGe929-s-Portfolio/static/js/787.167ecae5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.791666c1.css",
-    "static/js/main.bc3265db.js"
+    "static/css/main.70f0c263.css",
+    "static/js/main.48c6fd00.js"
   ]
 }
