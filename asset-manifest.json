@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/OrAnGe929-s-Portfolio/static/css/main.0417111e.css",
+    "main.css": "/OrAnGe929-s-Portfolio/static/css/main.791666c1.css",
     "main.js": "/OrAnGe929-s-Portfolio/static/js/main.bc3265db.js",
     "static/js/787.167ecae5.chunk.js": "/OrAnGe929-s-Portfolio/static/js/787.167ecae5.chunk.js",
     "static/media/Galapagosproject.png": "/OrAnGe929-s-Portfolio/static/media/Galapagosproject.98ca336ed3a85ecd132a.png",
@@ -35,12 +35,12 @@
     "static/media/GalapagosNav.png": "/OrAnGe929-s-Portfolio/static/media/GalapagosNav.a22b1ed65d8cb5afd6ca.png",
     "static/media/logo2.png": "/OrAnGe929-s-Portfolio/static/media/logo2.394d4cc9a76d42ea31d3.png",
     "index.html": "/OrAnGe929-s-Portfolio/index.html",
-    "main.0417111e.css.map": "/OrAnGe929-s-Portfolio/static/css/main.0417111e.css.map",
+    "main.791666c1.css.map": "/OrAnGe929-s-Portfolio/static/css/main.791666c1.css.map",
     "main.bc3265db.js.map": "/OrAnGe929-s-Portfolio/static/js/main.bc3265db.js.map",
     "787.167ecae5.chunk.js.map": "/OrAnGe929-s-Portfolio/static/js/787.167ecae5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0417111e.css",
+    "static/css/main.791666c1.css",
     "static/js/main.bc3265db.js"
   ]
 }
