@@ -51,7 +51,12 @@ function NavigationBar({ClickSetVisible}) {
   }, []);
   const handleMobileNavClick = () => {
     setIsNavVisible(!isNavVisible); // 切换导航栏显示状态
-    console.log(isNavVisible);
+    
+  if (!isNavVisible) {
+    document.body.style.overflow = 'hidden'; // 禁止滚动
+  } else {
+    document.body.style.overflow = ''; // 恢复滚动
+  }
   };
   // 添加窗口大小变化监听
   useEffect(() => {

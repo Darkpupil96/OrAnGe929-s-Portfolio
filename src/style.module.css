@@ -1,10 +1,16 @@
 
+* {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
 html{
     scrollbar-width: none;
     cursor: default;
     margin:0;
     padding:0;
     box-sizing: border-box;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 .App {
   display:flex;
@@ -300,19 +306,20 @@ display: none;
 .ExperienceContaner{
   position:relative;
   height:30vh;
-  width: 50vw;
+  width: auto;
   left:0;
-
+  display: none;
   border-radius: 3%;
-  background-color: #ffffff;
+  background-color: #c42a2a;
   animation:ZoomInFromRight 1s ease-in-out 1;
+  contain: content;
 }
 .Experience{
-  position:absolute;
+  position:relative;
   margin-top: 10vh;
   left:0vw;
   border-radius: 3%;
-  width:30vw;
+  width:70%;
   height:0.05vw;
   background-color: #fff;
   animation:ZoomInFromRight 1s ease-in-out 1;
@@ -320,13 +327,12 @@ display: none;
 
 .Dot1{
   position:absolute;
-  bottom:-0.2vh;
+  bottom:-1vh;
   width: 0.5vh;       
   height: 0.5vh;  
   border-radius: 50%;  
-  background-color: #ffffff;
   cursor: pointer;
-  color:#fff;
+  color:#ffffff;
 }
 .Year{
   position:absolute;
@@ -335,7 +341,8 @@ display: none;
   font-size: 2vh;
   background: #ffffff;
   color: #000;
-  padding:0.1vw 0.4VW 0.1VW 0.4VW;
+  width:3vw;
+text-align: center;
   border-radius: 4%;
 }
 .Year:hover{
@@ -451,8 +458,6 @@ color:#610869;
   align-items: center;
   position: fixed;
   top: 50%;
-  left:5%;
-  transform: translateY(-50%);
   width: 90%;
   pointer-events: none;
 }
@@ -620,6 +625,14 @@ color:#610869;
 
 /* Responsive Design for Mobile ................................................................................................................................................................*/
 @media (max-width: 900px) {
+  body{
+    overflow-x: hidden;
+  }
+* {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  max-width: 100%;
+}
   .Content{
     width:70%;
     text-align: center;
@@ -740,7 +753,7 @@ color:#610869;
 .AboutMe{
 
   position:relative;
-    height:150vh  ;
+    height:100vh  ;
     display:flex;
     flex-direction: column; 
     justify-content: top;
@@ -810,15 +823,22 @@ color:#610869;
 .IntroText{
   padding-top: 5vh;
 }
+.ExperienceContainer{
+  display: none;
+}
 .Experience{
   position:absolute;
   border-radius: 3%;
 margin-top: 15vh;;
-  width:80vw;
-  left:0;
+  width:70%;
+  left:15%;
   height:0.05vw;
   background-color: #fff;
   animation:ZoomInFromRight 1s ease-in-out 1;
+  max-width: 100vw; /* 确保不超出视口 */
+  overflow-x: hidden; /* 隐藏横向溢出 */
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .Dot1{
@@ -838,7 +858,7 @@ margin-top: 15vh;;
   font-size: 2.2vw;
   background: #ffffff;
   color: #000;
-  padding:0.05vw 1VW 0.05VW 1VW;
+  padding:0.05vw 4VW 0.05VW 2VW;
   border-radius: 4%;
 }
 .Year:hover{
@@ -939,17 +959,16 @@ display: none;
 padding-top: 0vh;
 }
 .SwitcherButton {
-  font-size: 2rem;
+  font-size: 1.3rem;
 }
 .SwitcherContainer{
-
-  left:4%;
-  width: 92%;}
+width: 90%;}
 
 /*Skills ******************************************/
   .Skills{
     display: flex;
     height:100vh;
+    width:auto;
     padding-top: 10vh;
     display:flex;
     flex-direction: column;
@@ -958,16 +977,18 @@ padding-top: 0vh;
 
 }
 .TagCloud{
-  font-size: 1.4rem;
+  box-sizing: border-box;
+  font-size: 1.3rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 81%; /* 适配屏幕宽度 */
-  height: 50vh; /* 确保 TagCloud 高度 */
+  width: 100%; /* 适配屏幕宽度 */
+  height: 80vh; /* 确保 TagCloud 高度 */
+padding-right: 10vw;
 }
 .SkillContent {
   width:100%;
-  margin-top: -10vh;
+  margin-top: -25vh;
   justify-content: top;
   text-align: center;
 }
