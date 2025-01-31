@@ -12,7 +12,7 @@ function AMCWeb({ SwitcherOnClick }) {
   const componentRef = useRef(null);
   function getThreshold() {
     const windowWidth = window.innerWidth;
-    return windowWidth > 900 ? 0.1 : 0.2;
+    return windowWidth > 900 ? 0.1 : 0.1;
   }
   useEffect(() => {
     const Switcherobserver = new IntersectionObserver(

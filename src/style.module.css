@@ -824,7 +824,7 @@ color:#610869;
   padding-top: 5vh;
 }
 .ExperienceContainer{
-  display: none;
+ width:80%;
 }
 .Experience{
   position:absolute;
