@@ -73,6 +73,15 @@ function Portfolio() {
     };
   }, []);
 
+  const projectComponents = {
+    'Galapagos Tourism Web Design': GalapagosProjectWeb,
+    'Australian Management College Web Dev': AMCWeb,
+    'Groove - An Interactive Music Device': CubeProjectWeb,
+    'British Rock chronicle': BritishRockChronicleWeb,
+  };
+  
+  const SelectedComponent = projectComponents[hoveredTitle];
+
   return (
     <div id="Portfolio" className={Styles.Portfolio} ref={portfolioRef}>
       {isVisible && (
@@ -147,19 +156,8 @@ function Portfolio() {
             <div className={Styles.ProjectDisplay}>{getHoveredContent()}</div>
           </div>
           <div className={Styles.ProjectDetails}>
-            {hoveredTitle === 'Galapagos Tourism Web Design' ? (
-              <GalapagosProjectWeb SwitcherOnClick={SwitcherOnClick} />
-            ) : null}
-               {hoveredTitle === 'Australian Management College Web Dev' ? (
-              <AMCWeb SwitcherOnClick={SwitcherOnClick} />
-            ) : null}
-             {hoveredTitle === 'Groove - An Interactive Music Device' ? (
-              <CubeProjectWeb SwitcherOnClick={SwitcherOnClick} />
-            ) : null}
-                         {hoveredTitle === 'British Rock chronicle' ? (
-              <BritishRockChronicleWeb SwitcherOnClick={SwitcherOnClick} />
-            ) : null}
-          </div>
+    {SelectedComponent && <SelectedComponent SwitcherOnClick={SwitcherOnClick} />}
+  </div>
         </>
       )}
     </div>

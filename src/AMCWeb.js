@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Hammer from "hammerjs";
 import Styles from './style.module.css';
 import TopPic from './AMCImages/AMCTopPic.png';
 import Reception from './AMCImages/Reception.png';
@@ -9,6 +10,7 @@ import WidgetExample from './AMCImages/WidgetExample.png';
 
 function AMCWeb({ SwitcherOnClick }) {
   const [isVisible, setIsVisible] = useState(false);
+
   const componentRef = useRef(null);
   function getThreshold() {
     const windowWidth = window.innerWidth;
@@ -33,6 +35,32 @@ function AMCWeb({ SwitcherOnClick }) {
       if (currentElement) {
         Switcherobserver.unobserve(currentElement);
       }
+    };
+  }, []);
+
+
+  //检测鼠标滚动
+  const [isScrolling, setIsScrolling] = useState(false);
+  
+  useEffect(() => {
+    let timeout = null;
+  
+    const handleScroll = () => {
+      setIsScrolling(true);
+    
+      clearTimeout(timeout);
+      
+      const delay = window.innerWidth < 900 ? 1000 : 3000; // 小屏 1000ms, 大屏 3000ms
+    
+      timeout = setTimeout(() => {
+        setIsScrolling(false);
+      }, delay);
+    };
+    window.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timeout);
     };
   }, []);
 
@@ -63,6 +91,26 @@ useEffect(() => {
     document.body.style.overflow = '';
   };
 }, [isFullScreen]);
+
+
+useEffect(() => {
+  const hammer = new Hammer(componentRef.current);
+
+  hammer.on("swipeleft", () => {
+    handleScrollToTop(); // 滑动到顶部
+    SwitcherOnClick("left"); // 触发传入的 SwitcherOnClick 回调
+  });
+  hammer.on("swiperight", () => {
+    handleScrollToTop(); // 滑动到顶部
+    SwitcherOnClick("right"); // 触发传入的 SwitcherOnClick 回调
+  });
+
+  return () => {
+    hammer.destroy(); // 组件卸载时销毁
+  };
+}, []);
+
+
   return (
     <div id="AMC" className={Styles.Web} ref={componentRef}>
       <div className={Styles.Content}>
@@ -137,28 +185,28 @@ useEffect(() => {
                 <h3>Reflection</h3>
                 <p>In this internship project, I not only gained more industry experience in web development but also realized that small businesses, with limited budgets, tend to prioritize platforms like WordPress for website development. As a front-end developer, it is a thought-provoking question to consider how to combine my skills with current industry trends to better serve employers.</p>
       </div>
-      {isVisible && (
-             <div className={Styles.SwitcherContainer}>
-               <button
-                 className={Styles.SwitcherButton}
-                 onClick={() => {
-                   handleScrollToTop(); // 滑动到顶部
-                   SwitcherOnClick("left"); // 触发传入的 SwitcherOnClick 回调
-                 }}
-               >
-                 {"<"}
-               </button>
-               <button
-                 className={Styles.SwitcherButton}
-                 onClick={() => {
-                   handleScrollToTop(); // 滑动到顶部
-                   SwitcherOnClick("right"); // 触发传入的 SwitcherOnClick 回调
-                 }}
-               >
-                 {">"}
-               </button>
-             </div>
-           )}
+      {isVisible && isScrolling && (
+              <div className={Styles.SwitcherContainer}>
+                <button
+                  className={Styles.SwitcherButton}
+                  onClick={() => {
+                    handleScrollToTop();
+                    SwitcherOnClick("left");
+                  }}
+                >
+                  {"<"}
+                </button>
+                <button
+                  className={Styles.SwitcherButton}
+                  onClick={() => {
+                    handleScrollToTop();
+                    SwitcherOnClick("right");
+                  }}
+                >
+                  {">"}
+                </button>
+              </div>
+            )}
          </div>
        );
      }

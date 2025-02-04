@@ -4,7 +4,7 @@ import Styles from './style.module.css';
 import About from "./About.js";
 import Home from "./Home";
 import Portfolio from "./Portfolio.js";
-import Skills from "./Skills.js";
+import Skills from "./Skills.tsx";
 import Contact from "./Contact.js";
 import LoadingOverlay from "./LoadingOverlay"; // 全局 Loading 动画组件
 
@@ -84,10 +84,10 @@ function App() {
 
   return (
     <>
-      {isLoading && <LoadingOverlay />} {/* 全局 Loading 动画 */}
+      {isLoading && <LoadingOverlay />} {/* Global Loading animation */}
       <div
         className={Styles.App}
-        style={{ backgroundColor: bgColor, transition: 'background-color 0.3s' }}
+        style={{ backgroundColor: bgColor, transition: 'background-color 0.2s' }}
       >
         <NavigationBar ClickSetVisible={handleNavigationClick} />
         <div style={{ height: '3vw' }}></div>

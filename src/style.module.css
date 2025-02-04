@@ -2,15 +2,17 @@
 * {
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+ 
 }
+
 html{
     scrollbar-width: none;
     cursor: default;
     margin:0;
     padding:0;
     box-sizing: border-box;
-    overflow-x: hidden;
     max-width: 100%;
+    overflow-x: hidden;
 }
 .App {
   display:flex;
@@ -111,7 +113,7 @@ display: none;
 
   }
   .navChosen {
-    display: none;
+    display:none;
     background-color: rgba(0, 0, 0, 0.9);
     width: 0;
     height: 0.13vw;
@@ -132,13 +134,14 @@ display: none;
 
 }
 .MobileLogo{
-  display:none;
+  display: none;
 }
 /* Home ...........................................................................*/
 .Home{
     padding-top: 8vh;
     box-sizing: border-box;
-    height:100vh;
+    height:60vh;
+
     display:flex;
     flex-direction: column;
     /*background-color: rgb(255, 255, 255); */
@@ -147,6 +150,7 @@ display: none;
 .HomeContent{
   display:flex;
   flex-direction: row;
+
 }
 .Slogan{
     width:45%;
@@ -216,7 +220,7 @@ display: none;
   padding-top: 13vh;
   box-sizing: border-box;
   position:relative;
-    height:100vh;
+    height:60vh;
     display:flex;
     flex-direction: row; 
     justify-content:center;
@@ -327,12 +331,13 @@ display: none;
 
 .Dot1{
   position:absolute;
-  bottom:-1vh;
-  width: 0.5vh;       
-  height: 0.5vh;  
+  bottom:-0.3vh;
+  width:0.3vw; 
+  height: 0.3vw;
   border-radius: 50%;  
+  background-color: #ffffff;
   cursor: pointer;
-  color:#ffffff;
+  color:#fff;
 }
 .Year{
   position:absolute;
@@ -350,6 +355,7 @@ text-align: center;
 
 }
 .CurrentDesCription{
+  padding-top: 3vh;
   color: white; 
   font-size: 2vh;
   text-align: left;
@@ -366,7 +372,7 @@ line-height: 3.5vh;
 .Portfolio {
   padding-top: 13vh;
   box-sizing: border-box;
-  min-height: 100vh; /* 高度根据子元素内容动态调整 */
+  min-height: 60vh; /* 高度根据子元素内容动态调整 */
   display: flex;
   flex-direction: column;
 
@@ -490,7 +496,7 @@ color:#610869;
 
 /* Skills ...........................................................................*/
 .Skills{
-    height:100vh;
+    height:60vh;
     padding-top: 10vh;
     display:flex;
     flex-direction: row;
@@ -520,6 +526,32 @@ color:#610869;
   justify-content: top;
   line-height: 2rem;
 }
+
+
+progress {
+
+  appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #ffffff; /* 背景颜色 */
+  border-radius: 1px;
+}
+
+progress::-webkit-progress-value {
+  background-color: rgb(151, 151, 151); /* 进度条颜色（Chrome & Safari） */
+  border-radius: 1px;
+}
+
+progress::-moz-progress-bar {
+  background-color: blue; /* 进度条颜色（Firefox） */
+  border-radius: 1px;
+}
+
+
+
+
+
 
 /* Contact ...........................................................................*/
 .Contact{
@@ -625,13 +657,17 @@ color:#610869;
 
 /* Responsive Design for Mobile ................................................................................................................................................................*/
 @media (max-width: 900px) {
-  body{
-    overflow-x: hidden;
-  }
+  
+body{
+  overflow-x: hidden;
+}
 * {
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   max-width: 100%;
+}
+li{
+  margin-right: 10vw;
 }
   .Content{
     width:70%;
@@ -653,10 +689,10 @@ color:#610869;
     transition: opacity 0.3s ease-out;
   }
 .Logo{
-  display:none !important;
+  visibility: hidden !important;
 }
 .navbar{
-  background-color: #fff;
+  background-color: #ffffff;
   width:100%;
   justify-content: space-between; /* 元素之间均匀分布 */
 
@@ -664,8 +700,8 @@ color:#610869;
   height:100vh;
   box-sizing: border-box;
   position:fixed;
-  padding-top:10vh;
-  padding-bottom: 10vh;
+
+  padding-bottom: 30vh;
   z-index:99;
   flex-direction:column;
   
@@ -685,21 +721,23 @@ color:#610869;
   z-index:99;
 }
 .MobileNav{
+  box-sizing: border-box;
+  padding-left: 10px;
   cursor:pointer;
   display: block;
-  height:4vh;
-  width:5vw;
+  height:8vw;
+  width:10vw;
   line-height: 4vh;
   position:fixed;
-  right:4vw;
-  top:3vh;
+  right:7px;
+  top:10px;
   z-index:100;
 }
 .MobileNav:Hover{
   filter: drop-shadow(0.8px 0.8px 2px rgba(86, 86, 86, 0.5));
 }
 .NavGap{
-  display: none;
+  visibility: hidden;
 }
 .Selected{
   padding-left: 0.8vw;
@@ -751,20 +789,23 @@ color:#610869;
 
 /* About Me ...........................................................................*/
 .AboutMe{
-
+  padding-top: 25vh;
+box-sizing: border-box;
   position:relative;
     height:100vh  ;
     display:flex;
     flex-direction: column; 
+    width:100%;
     justify-content: top;
+    color:white;
+
 
 }
 .ProfilePic{
   opacity:0;
 }
 .ProfilePicVisible{
-  position-anchor: top;
-  left:32vw;
+  left:80%;
   width: 35vw;       
   height: 35vw;  
   top:20vw;
@@ -772,7 +813,7 @@ color:#610869;
   background-image: url('./My-pic.jpg');
   background-size: contain;
   background-repeat: no-repeat;
-  animation:ZoomInFromLeft2 1s ease-in-out 1;
+  display: none;
 
 }
 @keyframes ZoomInFromLeft2{
@@ -788,15 +829,15 @@ color:#610869;
 
 .TextAboutMe{
   color:#ececec;
- top:60vw;
-  
-  left:10%;
-  width:80%;
-  text-align: center;
+
+ width:80%;
+position:absolute;
+left:10%;
+  text-align: center !important;
   align-items:center;
-  animation:ZoomInFromBottom 1s ease-in-out 1;
   font-size:1.7vh;
   line-height: 4.2vh;
+  height:120vh;
 }
 .Designer{
   font-size: 2vh;
@@ -821,10 +862,15 @@ color:#610869;
   cursor:pointer;
 }
 .IntroText{
+  box-sizing: border-box;
   padding-top: 5vh;
+  padding-left: 10%;
+  padding-right:10%;
+  line-height: 2rem;
 }
 .ExperienceContainer{
  width:80%;
+ visibility: hidden;
 }
 .Experience{
   position:absolute;
@@ -834,7 +880,6 @@ margin-top: 15vh;;
   left:15%;
   height:0.05vw;
   background-color: #fff;
-  animation:ZoomInFromRight 1s ease-in-out 1;
   max-width: 100vw; /* 确保不超出视口 */
   overflow-x: hidden; /* 隐藏横向溢出 */
   display: flex;

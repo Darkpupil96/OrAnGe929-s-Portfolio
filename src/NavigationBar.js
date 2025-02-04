@@ -52,11 +52,6 @@ function NavigationBar({ClickSetVisible}) {
   const handleMobileNavClick = () => {
     setIsNavVisible(!isNavVisible); // 切换导航栏显示状态
     
-  if (!isNavVisible) {
-    document.body.style.overflow = 'hidden'; // 禁止滚动
-  } else {
-    document.body.style.overflow = ''; // 恢复滚动
-  }
   };
   // 添加窗口大小变化监听
   useEffect(() => {
@@ -80,6 +75,28 @@ function NavigationBar({ClickSetVisible}) {
 
     
   }
+    // 监听 isNavVisible 状态，当 isNavVisible 为 true 且屏幕宽度小于 900px 时，禁止滚动
+    useEffect(() => {
+      const disableScroll = (event) => {
+        if (window.innerWidth < 900 && isNavVisible) {
+          event.preventDefault();
+        }
+      };
+  
+      if (isNavVisible && window.innerWidth < 900) {
+        document.body.style.overflow = "hidden"; // 禁止滚动
+        document.addEventListener("touchmove", disableScroll, { passive: false }); // 监听 touchmove
+      } else {
+        document.body.style.overflow = "auto"; // 允许滚动
+        document.removeEventListener("touchmove", disableScroll);
+      }
+  
+      return () => {
+        document.body.style.overflow = "auto"; // 确保组件卸载时恢复滚动
+        document.removeEventListener("touchmove", disableScroll);
+      };
+    }, [isNavVisible]);
+    
   return (
     <div>
     <div style={isNavVisible ? {display:'block'} : {display:'none'}}>
@@ -108,8 +125,8 @@ function NavigationBar({ClickSetVisible}) {
     </div>
     </div>
     <div className={Styles.MobileNav} onClick={handleMobileNavClick}>
-        <BsList style={isNavVisible?{display:'none'}:{display:'block'}} size={'6vw'} color='#46be0b'/>
-        <IoMdClose style={isNavVisible?{display:'block'}:{display:'none'}} size={'6vw'} color='black'/>
+        <BsList style={isNavVisible?{display:'none'}:{display:'block'}} size={'10vw'} color='#46be0b'/>
+        <IoMdClose style={isNavVisible?{display:'block'}:{display:'none'}} size={'10vw'} color='black'/>
         </div>
     </div>
   );

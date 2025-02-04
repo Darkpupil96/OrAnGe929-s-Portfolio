@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Hammer from "hammerjs";
 import Styles from "./style.module.css";
 import TopPic from "./CubeImages/CubeTopPic.png";
 import FunctionalSystem from "./CubeImages/FunctionalSystem.png";
@@ -10,6 +11,7 @@ import YouTubeVideo from "./YouTubeVideo";
 
 function CubeProjectWeb({ SwitcherOnClick }) {
   const [isVisible, setIsVisible] = useState(false);
+
   const componentRef = useRef(null);
 
   function getThreshold() {
@@ -38,6 +40,32 @@ function CubeProjectWeb({ SwitcherOnClick }) {
     };
   }, []);
 
+//检测鼠标滚动
+const [isScrolling, setIsScrolling] = useState(false);
+
+useEffect(() => {
+  let timeout = null;
+
+  const handleScroll = () => {
+    setIsScrolling(true);
+  
+    clearTimeout(timeout);
+    
+    const delay = window.innerWidth < 900 ? 1000 : 3000; // 小屏 1000ms, 大屏 3000ms
+  
+    timeout = setTimeout(() => {
+      setIsScrolling(false);
+    }, delay);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+    clearTimeout(timeout);
+  };
+}, []);
+
   // 处理滚动逻辑
   const handleScrollToTop = () => {
     const currentElement = componentRef.current;
@@ -65,6 +93,22 @@ useEffect(() => {
   };
 }, [isFullScreen]);
 
+useEffect(() => {
+  const hammer = new Hammer(componentRef.current);
+
+  hammer.on("swipeleft", () => {
+    handleScrollToTop(); // 滑动到顶部
+    SwitcherOnClick("left"); // 触发传入的 SwitcherOnClick 回调
+  });
+  hammer.on("swiperight", () => {
+    handleScrollToTop(); // 滑动到顶部
+    SwitcherOnClick("right"); // 触发传入的 SwitcherOnClick 回调
+  });
+
+  return () => {
+    hammer.destroy(); // 组件卸载时销毁
+  };
+}, []);
 
 
   return (
@@ -177,31 +221,28 @@ useEffect(() => {
         />
        
       </div>
-      {isVisible && (
-        <div className={Styles.SwitcherContainer}>
-          <button
-            className={Styles.SwitcherButton}
-            onClick={() => {
-              handleScrollToTop(); // 滑动到顶部
-              SwitcherOnClick("left"); // 触发传入的 SwitcherOnClick 回调
-            }}
-          >
-           
-            {"<"} 
-          </button>
-          <button
-            className={Styles.SwitcherButton}
-            onClick={() => {
-              handleScrollToTop(); // 滑动到顶部
-              SwitcherOnClick("right"); // 触发传入的 SwitcherOnClick 回调
-            }}
-          >
-            
-           {">"}
-          </button>
-        </div>
-
-      )}
+      {isVisible && isScrolling && (
+              <div className={Styles.SwitcherContainer}>
+                <button
+                  className={Styles.SwitcherButton}
+                  onClick={() => {
+                    handleScrollToTop();
+                    SwitcherOnClick("left");
+                  }}
+                >
+                  {"<"}
+                </button>
+                <button
+                  className={Styles.SwitcherButton}
+                  onClick={() => {
+                    handleScrollToTop();
+                    SwitcherOnClick("right");
+                  }}
+                >
+                  {">"}
+                </button>
+              </div>
+            )}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Styles from './style.module.css';
+import MyPic from "./MyPic.png";
 
 function About() {
     const [isVisible, setIsVisible] = useState(false);
@@ -124,13 +125,13 @@ function About() {
             }
         );
 
-        if (expRef.current) {
-            observer.observe(expRef.current);
+        if (ref.current) {
+            observer.observe(ref.current);
         }
 
         return () => {
-            if (expRef.current) {
-                observer.unobserve(expRef.current);
+            if (ref.current) {
+                observer.unobserve(ref.current);
             }
         };
     }, []);
@@ -154,9 +155,11 @@ function About() {
     }, [currentExp, experiences]);
 
     return (
-        <div id="About" className={Styles.AboutMe}>
-            <div ref={ref} className={isVisible ? Styles.ProfilePicVisible : Styles.ProfilePic}></div>
-            <div ref={ref} className={isVisible ? Styles.TextAboutMe : {}}>
+        <div ref={ref} id="About" className={Styles.AboutMe}>
+            <div className={isVisible ? Styles.ProfilePicVisible : Styles.ProfilePic}></div>
+           
+            <div  className={isVisible ? Styles.TextAboutMe : {}}>
+            <div style={{width:'100%',height:'auto',alignItems:'center',paddingBottom:"2rem"}}> {(window.innerWidth < 900)?<img src={MyPic} alt="My picture" width="50%"/>:<></>}</div>
                 <span className={Styles.Designer} onClick={() => {
                     document.getElementById('Portfolio')?.scrollIntoView({ behavior: 'smooth' });
                 }}>Designer</span> <span>|</span>
