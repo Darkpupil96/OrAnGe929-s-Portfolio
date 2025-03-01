@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/OrAnGe929-s-Portfolio/static/css/main.b91c71a0.css",
-    "main.js": "/OrAnGe929-s-Portfolio/static/js/main.ca243279.js",
+    "main.js": "/OrAnGe929-s-Portfolio/static/js/main.b2c2ec1d.js",
     "static/js/787.167ecae5.chunk.js": "/OrAnGe929-s-Portfolio/static/js/787.167ecae5.chunk.js",
     "static/media/Galapagosproject.png": "/OrAnGe929-s-Portfolio/static/media/Galapagosproject.98ca336ed3a85ecd132a.png",
     "static/media/BritishRockChronicle.png": "/OrAnGe929-s-Portfolio/static/media/BritishRockChronicle.40f7ef72da55b51306f0.png",
@@ -37,11 +37,11 @@
     "static/media/logo2.png": "/OrAnGe929-s-Portfolio/static/media/logo2.394d4cc9a76d42ea31d3.png",
     "index.html": "/OrAnGe929-s-Portfolio/index.html",
     "main.b91c71a0.css.map": "/OrAnGe929-s-Portfolio/static/css/main.b91c71a0.css.map",
-    "main.ca243279.js.map": "/OrAnGe929-s-Portfolio/static/js/main.ca243279.js.map",
+    "main.b2c2ec1d.js.map": "/OrAnGe929-s-Portfolio/static/js/main.b2c2ec1d.js.map",
     "787.167ecae5.chunk.js.map": "/OrAnGe929-s-Portfolio/static/js/787.167ecae5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b91c71a0.css",
-    "static/js/main.ca243279.js"
+    "static/js/main.b2c2ec1d.js"
   ]
 }
